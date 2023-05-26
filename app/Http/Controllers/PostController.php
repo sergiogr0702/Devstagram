@@ -39,6 +39,25 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
+        /*
+        // Otras maneras de almacenar valores
+        // Creando un objeto y almacenando con save
+        $post = new Post();
+        $post->titulo = $request->titulo;
+        $post->descripcion = $request->descripcion;
+        $post->imagen = $request->imagen;
+        $post->user_id = auth()->user()->id;
+        $post->save();
+
+        // Creando un nuevo objeto en la relación del usuario
+        $request->user()->posts()->create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'imagen' => $request->imagen,
+            'user_id' => auth()->user()->id,
+        ]);
+        */
+
         return redirect()->route('posts.index', auth()->user());
     }
 }
