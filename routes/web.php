@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImagenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
@@ -35,3 +36,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
+
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+
+Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
