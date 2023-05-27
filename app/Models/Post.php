@@ -25,4 +25,14 @@ class Post extends Model
     {
         return $this->hasMany(Comentario::class)->orderBy('created_at', 'desc');
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function checkLiked($user)
+    {
+        return $this->likes->contains('user_id', $user->id);
+    }
 }
