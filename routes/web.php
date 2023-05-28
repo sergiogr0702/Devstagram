@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,8 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('principal');
-});
+// Ruta para mostrar home
+Route::get('/', HomeController::class)->name('home');
 
 // Rutas para login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
