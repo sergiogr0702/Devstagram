@@ -8,8 +8,11 @@
             <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post {{ $post->titulo }}" />
 
             <div class="p-3 flex items-center gap-4">
-                @auth()
+                @auth
 
+                    <livewire:like-post :post="$post"  />
+
+{{--
                     @if ($post->checkLiked(auth()->user()))
                         <form action="{{ route('posts.likes.destroy', $post) }}" method=POST>
                             @csrf
@@ -38,11 +41,14 @@
                             </div>
                         </form>
                     @endif
+--}}
                 @endauth
+{{--
                 <p class="font-bold">
                     {{ $post->likes->count() }} 
                     <span class="font-normal">likes</span>
                 </p>
+--}}
             </div>
             <div>
                 <a href="{{ route('posts.index', $post->user) }}" class="font-bold">
